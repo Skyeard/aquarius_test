@@ -13,6 +13,7 @@ class NetworkDevice:
         self._validate_ipv4(self.ip_address)
         self._validate_name()
 
+
     @staticmethod
     def _validate_ipv4(ip):
         try:
@@ -35,13 +36,8 @@ class NetworkDevice:
     def power_off(self):
         self.__status = 'Inactive'
 
+
     def get_info(self):
         return f"""Name: {self.name}
 IP: {self.ip_address}
 Status: {self.__status}"""
-
-if __name__ == '__main__':
-    obj = NetworkDevice(name='Device', ip_address='192.168.4.2')
-    print(obj.get_info())
-    obj.power_on()
-    print(obj.get_info())
