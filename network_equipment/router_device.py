@@ -30,18 +30,8 @@ class Router(NetworkDevice):
         if self.routing_table.get(destinition, False):
             del self.routing_table[destinition]
     
+
     def get_info(self):
         device_info = super().get_info()
         router_info = f"""{device_info}\nRouting Table: {self.routing_table}"""
         return router_info
-            
-
-
-if __name__ == "__main__":
-    obj = Router(name='Router1', ip_address='192.168.4.20', routing_table={'192.168.4.101':'192.168.4.1'})
-    print(obj.get_info())
-    obj.add_route(destinition='192.168.4.102', gateway='192.168.4.1')
-    print(obj.get_info())
-    obj.remove_route(destinition='192.168.4.101')
-    obj.remove_route(destinition='192.168.4.101')
-    print(obj.get_info())

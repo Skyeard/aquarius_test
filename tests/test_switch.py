@@ -1,34 +1,38 @@
-from pyats.aetest import Testcase, setup, test
 from pyats import aetest
 from network_equipment.switch_device import Switch
 from network_equipment.network_device import NetworkDevice
 
 
-class TestSwitch(Testcase):
+class TestSwitch(aetest.Testcase):
 
-    @setup
+
+    @aetest.setup
     def setup(self):
         self.switch = Switch(name="Switch1", ip_address="192.168.4.10", vlan=10)
 
-    @test
+
+    @aetest.test
     def test_inheritance(self, steps):
         with steps.start("Проверка наследования"):
             assert isinstance(self.switch, NetworkDevice)
 
-    @test
+
+    @aetest.test
     def test_create_vlan(self, steps):
         with steps.start("Создание VLAN"):
             self.switch.delete_vlan(10)  
             self.switch.create_vlan(20)
             assert self.switch.vlan == 20
 
-    @test
+
+    @aetest.test
     def test_delete_vlan(self, steps):
         with steps.start("Удаление VLAN"):
             self.switch.delete_vlan(20)
             assert self.switch.vlan == ''
 
-    @test
+
+    @aetest.test
     def test_get_info(self, steps):
         with steps.start("Проверка get_info"):
             self.switch.create_vlan(14)

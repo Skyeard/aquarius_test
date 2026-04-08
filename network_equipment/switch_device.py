@@ -32,12 +32,3 @@ class Switch(NetworkDevice):
     def delete_vlan(self, vlan_id: int):
         if self.vlan == vlan_id:
             self.vlan = ''
-
-
-if __name__ == "__main__":
-    obj = Switch(name='Switch1', ip_address='192.168.4.101', vlan=10)
-    print(obj.get_info())
-    obj.delete_vlan(10)
-    print(obj.get_info())
-    obj.create_vlan(5)
-    print(obj.get_info())
