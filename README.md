@@ -7,7 +7,7 @@
 
 ## Быстрый запуск
 
-### Задание 1: Manual Testing
+### Задание 1: Ручное тестирование
 ```bash
 python manual_testing.py
 ```
